@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  plugin-builder:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /plugin
+    command: make
+    volumes:
+      - ./plugin:/plugin
+
+volumes:
+  plugin:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ./resources
